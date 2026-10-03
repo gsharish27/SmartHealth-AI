@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MediPulse Health Monitoring System - Track real-time vitals, calculate BMI, access daily health tips, and manage your personal wellness.">
+    <meta name="keywords" content="health monitoring, vitals tracker, heart rate, blood pressure, BMI calculator, health tips">
+    <title>MediPulse | Smart Health Monitoring System</title>
+    
+    <!-- Google Fonts (Poppins & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons 6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="main-header">
+        <div class="container navbar">
+            <a href="#home" class="logo">
+                <div class="logo-icon-bg">
+                    <i class="fa-solid fa-heart-pulse logo-icon"></i>
+                </div>
+                <span class="logo-text">Medi<span class="highlight">Pulse</span></span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li class="nav-item"><a href="#dashboard" class="nav-link"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                    <li class="nav-item"><a href="#bmi-calculator" class="nav-link"><i class="fa-solid fa-calculator"></i> BMI Calculator</a></li>
+                    <li class="nav-item"><a href="#health-tips" class="nav-link"><i class="fa-solid fa-lightbulb"></i> Health Tips</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Theme" aria-label="Toggle dark and light mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="#dashboard" class="btn btn-primary btn-sm nav-cta">Get Started</a>
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- 1. Hero Section -->
+        <section class="hero" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="live-status-pill">
+                        <span class="pulse-indicator"></span>
+                        <span>Live System Operational</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Smart <span class="text-gradient">Health Monitoring</span> System for Better Living
+                    </h1>
+                    <p class="hero-subtitle">
+                        Track your vital signs in real-time, compute precise BMI metrics, receive daily expert health recommendations, and maintain optimal wellness effortless and beginner-friendly.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#dashboard" class="btn btn-primary btn-lg">
+                            <i class="fa-solid fa-gauge-high"></i> Get Started
+                        </a>
+                        <a href="#bmi-calculator" class="btn btn-outline btn-lg">
+                            <i class="fa-solid fa-weight-scale"></i> Calculate BMI
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                            <div class="stat-info">
+                                <h4>24/7 Monitoring</h4>
+                                <p>Continuous Vitals Tracking</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <div class="stat-info">
+                                <h4>Instant Results</h4>
+                                <p>Real-time Updates</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                            <div class="stat-info">
+                                <h4>Expert Tips</h4>
+                                <p>Daily Health Advice</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-card">
+                        <img src="assets/images/hero_illustration.jpg" alt="Health Monitoring System Banner" class="hero-img">
+                        <div class="floating-badge badge-heart">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            <div>
+                                <span>Avg Heart Rate</span>
+                                <strong>72 BPM</strong>
+                            </div>
+                        </div>
+                        <div class="floating-badge badge-spo2">
+                            <i class="fa-solid fa-lungs"></i>
+                            <div>
+                                <span>SpO₂ Normal</span>
+                                <strong>98%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Dashboard Section -->
+        <section class="section dashboard-section" id="dashboard">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><i class="fa-solid fa-heart-circle-check"></i> Real-Time Telemetry</span>
+                    <h2 class="section-title">Health Dashboard</h2>
+                    <p class="section-subtitle">Monitor live simulated vital parameters with instant status alerts updated every few seconds.</p>
+                    
+                    <div class="dashboard-controls">
+                        <div class="status-indicator-box">
+                            <span class="status-dot live" id="live-dot"></span>
+                            <span id="simulation-status-text">Simulating Live Data</span>
+                        </div>
+                        <div class="control-buttons">
+                            <button id="toggle-simulation-btn" class="btn btn-secondary btn-sm">
+                                <i class="fa-solid fa-pause"></i> Pause Updates
+                            </button>
+                            <button id="manual-refresh-btn" class="btn btn-outline btn-sm">
+                                <i class="fa-solid fa-rotate"></i> Refresh Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vitals Grid Cards -->
+                <div class="vitals-grid">
+
+                    <!-- Heart Rate -->
+                    <div class="vital-card" id="card-heart-rate">
+                        <div class="vital-header">
+                            <div class="vital-icon bg-light-red">
+                                <i class="fa-solid fa-heart-pulse icon-red pulse-anim"></i>
+                            </div>
+                            <span class="badge badge-success" id="badge-heart-rate">Normal</span>
+                        </div>
+                        <div class="vital-body">
+                            <span class="vital-label">Heart Rate</span>
+                            <div class="vital-value-container">
+                                <span class="vital-value" id="val-heart-rate">72</span>
+                                <span class="vital-unit">BPM</span>
+                            </div>
+                            <div class="vital-range-bar">
+                                <div class="vital-range-fill bg-red" id="bar-heart-rate" style="width: 72%;"></div>
+                            </div>
+                            <div class="vital-footer">
+                                <span class="vital-trend"><i class="fa-solid fa-circle-check"></i> Healthy Resting Rate</span>
+                                <small class="range-info">60 - 100 BPM</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blood Pressure -->
+                    <div class="vital-card" id="card-bp">
+                        <div class="vital-header">
+                            <div class="vital-icon bg-light-blue">
+                                <i class="fa-solid fa-droplet icon-blue"></i>
+                            </div>
+                            <span class="badge badge-success" id="badge-bp">Optimal</span>
+                        </div>
+                        <div class="vital-body">
+                            <span class="vital-label">Blood Pressure</span>
+                            <div class="vital-value-container">
+                                <span class="vital-value" id="val-bp">120/80</span>
+                                <span class="vital-unit">mmHg</span>
+                            </div>
+                            <div class="vital-range-bar">
+                                <div class="vital-range-fill bg-blue" id="bar-bp" style="width: 75%;"></div>
+                            </div>
+                            <div class="vital-footer">
+                                <span class="vital-trend"><i class="fa-solid fa-circle-info"></i> Systolic / Diastolic</span>
+                                <small class="range-info">&lt; 120/80 mmHg</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Body Temperature -->
+                    <div class="vital-card" id="card-temp">
+                        <div class="vital-header">
+                            <div class="vital-icon bg-light-orange">
+                                <i class="fa-solid fa-temperature-half icon-orange"></i>
+                            </div>
+                            <div class="vital-header-right">
+                                <button class="unit-toggle-btn" id="temp-unit-toggle" title="Toggle °F / °C">°F</button>
+                                <span class="badge badge-success" id="badge-temp">Normal</span>
+                            </div>
+                        </div>
+                        <div class="vital-body">
+                            <span class="vital-label">Body Temperature</span>
+                            <div class="vital-value-container">
+                                <span class="vital-value" id="val-temp">98.6</span>
+                                <span class="vital-unit" id="unit-temp-label">°F</span>
+                            </div>
+                            <div class="vital-range-bar">
+                                <div class="vital-range-fill bg-orange" id="bar-temp" style="width: 68%;"></div>
+                            </div>
+                            <div class="vital-footer">
+                                <span class="vital-trend"><i class="fa-solid fa-shield"></i> Afebrile / Normal</span>
+                                <small class="range-info" id="temp-range-text">97.0°F - 99.0°F</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blood Oxygen (SpO2) -->
+                    <div class="vital-card" id="card-spo2">
+                        <div class="vital-header">
+                            <div class="vital-icon bg-light-teal">
+                                <i class="fa-solid fa-lungs icon-teal"></i>
+                            </div>
+                            <span class="badge badge-success" id="badge-spo2">Optimal</span>
+                        </div>
+                        <div class="vital-body">
+                            <span class="vital-label">Blood Oxygen (SpO₂)</span>
+                            <div class="vital-value-container">
+                                <span class="vital-value" id="val-spo2">98</span>
+                                <span class="vital-unit">%</span>
+                            </div>
+                            <div class="vital-range-bar">
+                                <div class="vital-range-fill bg-teal" id="bar-spo2" style="width: 98%;"></div>
+                            </div>
+                            <div class="vital-footer">
+                                <span class="vital-trend"><i class="fa-solid fa-thumbs-up"></i> Excellent Saturation</span>
+                                <small class="range-info">95% - 100%</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blood Sugar -->
+                    <div class="vital-card" id="card-sugar">
+                        <div class="vital-header">
+                            <div class="vital-icon bg-light-purple">
+                                <i class="fa-solid fa-syringe icon-purple"></i>
+                            </div>
+                            <div class="vital-header-right">
+                                <button class="unit-toggle-btn" id="sugar-state-toggle" title="Toggle Fasting / Post-meal">Fasting</button>
+                                <span class="badge badge-success" id="badge-sugar">Normal</span>
+                            </div>
+                        </div>
+                        <div class="vital-body">
+                            <span class="vital-label">Blood Sugar (Glucose)</span>
+                            <div class="vital-value-container">
+                                <span class="vital-value" id="val-sugar">95</span>
+                                <span class="vital-unit">mg/dL</span>
+                            </div>
+                            <div class="vital-range-bar">
+                                <div class="vital-range-fill bg-purple" id="bar-sugar" style="width: 70%;"></div>
+                            </div>
+                            <div class="vital-footer">
+                                <span class="vital-trend"><i class="fa-solid fa-vial"></i> Fasting Glucose</span>
+                                <small class="range-info" id="sugar-range-text">70 - 99 mg/dL</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overall Health Score Card -->
+                    <div class="vital-card overall-health-card">
+                        <div class="overall-header">
+                            <div>
+                                <span class="vital-label">Wellness Index</span>
+                                <h4>Overall Health Score</h4>
+                            </div>
+                            <div class="score-badge" id="overall-score">96 / 100</div>
+                        </div>
+                        <p class="score-desc">All vitals are operating within healthy baseline standard parameters.</p>
+                        <div class="score-progress">
+                            <div class="score-progress-bar" id="score-bar" style="width: 96%;"></div>
+                        </div>
+                        <div class="last-sync-footer">
+                            <span><i class="fa-regular fa-clock"></i> Last updated: <strong id="last-updated-time">Just now</strong></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Live Vitals Log Stream -->
+                <div class="vitals-log-container">
+                    <div class="log-header">
+                        <h3><i class="fa-solid fa-list-check"></i> Live Telemetry Log</h3>
+                        <span class="log-count"><i class="fa-solid fa-circle-dot color-green"></i> Real-time events</span>
+                    </div>
+                    <div class="log-table-wrapper">
+                        <table class="log-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Metric</th>
+                                    <th>Simulated Value</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vitals-log-body">
+                                <!-- Dynamic JS Inserted rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. BMI Calculator Section -->
+        <section class="section bmi-section bg-alt" id="bmi-calculator">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag"><i class="fa-solid fa-calculator"></i> Body Metrics</span>
+                    <h2 class="section-title">BMI Calculator</h2>
+                    <p class="section-subtitle">Calculate your Body Mass Index (BMI) to understand your health weight category.</p>
+                </div>
+
+                <div class="bmi-wrapper">
+                    <!-- Calculator Card -->
+                    <div class="bmi-card bmi-input-card">
+                        <div class="bmi-unit-selector">
+                            <button class="unit-btn active" id="unit-metric">Metric (cm / kg)</button>
+                            <button class="unit-btn" id="unit-imperial">Imperial (ft / lbs)</button>
+                        </div>
+
+                        <form id="bmi-form" onsubmit="return false;">
+                            
+                            <!-- Height Input -->
+                            <div class="form-group" id="height-metric-group">
+                                <div class="label-row">
+                                    <label for="height-cm"><i class="fa-solid fa-ruler-vertical"></i> Height (cm)</label>
+                                    <span class="range-val" id="height-cm-val">170 cm</span>
+                                </div>
+                                <input type="number" id="height-cm" min="50" max="250" value="170" class="form-control" required>
+                                <input type="range" id="height-cm-range" min="50" max="250" value="170" class="range-slider">
+                            </div>
+
+                            <div class="form-group hidden" id="height-imperial-group">
+                                <div class="label-row">
+                                    <label><i class="fa-solid fa-ruler-vertical"></i> Height (feet & inches)</label>
+                                </div>
+                                <div class="dual-inputs">
+                                    <div>
+                                        <input type="number" id="height-ft" min="2" max="8" value="5" class="form-control" placeholder="Feet">
+                                        <small>Feet</small>
+                                    </div>
+                                    <div>
+                                        <input type="number" id="height-in" min="0" max="11" value="7" class="form-control" placeholder="Inches">
+                                        <small>Inches</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Weight Input -->
+                            <div class="form-group" id="weight-group">
+                                <div class="label-row">
+                                    <label for="weight"><i class="fa-solid fa-weight-scale"></i> Weight (<span id="weight-unit-label">kg</span>)</label>
+                                    <span class="range-val" id="weight-val">68 kg</span>
+                                </div>
+                                <input type="number" id="weight" min="10" max="300" value="68" step="0.1" class="form-control" required>
+                                <input type="range" id="weight-range" min="10" max="200" value="68" class="range-slider">
+                            </div>
+
+                            <div class="bmi-btn-row">
+                                <button type="button" id="btn-calc-bmi" class="btn btn-primary btn-block">
+                                    <i class="fa-solid fa-calculator"></i> Calculate BMI
+                                </button>
+                                <button type="button" id="btn-reset-bmi" class="btn btn-outline btn-block">
+                                    <i class="fa-solid fa-rotate-left"></i> Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Result Card -->
+                    <div class="bmi-card bmi-result-card" id="bmi-result-box">
+                        <h3 class="result-title"><i class="fa-solid fa-square-poll-vertical"></i> Your BMI Result</h3>
+                        
+                        <div class="bmi-score-circle" id="bmi-circle">
+                            <span class="bmi-score-number" id="bmi-score-text">23.5</span>
+                            <span class="bmi-score-sub">kg/m²</span>
+                        </div>
+
+                        <div class="category-badge-wrapper">
+                            <span class="badge badge-success badge-lg" id="bmi-category-badge">Normal Weight</span>
+                        </div>
+
+                        <!-- Visual Meter Pointer Bar -->
+                        <div class="bmi-meter">
+                            <div class="bmi-meter-bar">
+                                <div class="meter-segment seg-underweight" title="Underweight (< 18.5)"></div>
+                                <div class="meter-segment seg-normal" title="Normal (18.5 - 24.9)"></div>
+                                <div class="meter-segment seg-overweight" title="Overweight (25 - 29.9)"></div>
+                                <div class="meter-segment seg-obese" title="Obese (30+)"></div>
+                            </div>
+                            <div class="bmi-meter-pointer" id="bmi-pointer" style="left: 45%;">
+                                <i class="fa-solid fa-caret-up"></i>
+                            </div>
+                        </div>
+
+                        <div class="bmi-scale-labels">
+                            <span>15</span>
+                            <span>18.5</span>
+                            <span>25</span>
+                            <span>30</span>
+                            <span>40</span>
+                        </div>
+
+                        <div class="bmi-advice-box" id="bmi-advice-box">
+                            <h4><i class="fa-solid fa-lightbulb icon-green"></i> Health Advice</h4>
+                            <p id="bmi-advice-text">Your BMI is within the healthy weight range! Maintain a balanced diet, stay hydrated, and engage in regular exercise.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. Health Tips Section -->
+        <section class="section tips-section" id="health-tips">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag"><i class="fa-solid fa-heart-pulse"></i> Wellness Knowledge</span>
+                    <h2 class="section-title">Daily Health Tips</h2>
+                    <p class="section-subtitle">Practical, expert-backed advice to optimize your diet, fitness, sleep, and mental well-being.</p>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="tips-controls">
+                    <div class="filter-pills" id="tips-filters">
+                        <button class="filter-pill active" data-category="all">All Tips</button>
+                        <button class="filter-pill" data-category="nutrition"><i class="fa-solid fa-apple-whole"></i> Nutrition</button>
+                        <button class="filter-pill" data-category="fitness"><i class="fa-solid fa-dumbbell"></i> Fitness</button>
+                        <button class="filter-pill" data-category="mental"><i class="fa-solid fa-brain"></i> Mental Health</button>
+                        <button class="filter-pill" data-category="sleep"><i class="fa-solid fa-moon"></i> Sleep</button>
+                    </div>
+
+                    <button class="btn btn-secondary btn-sm" id="random-tip-btn">
+                        <i class="fa-solid fa-shuffle"></i> Tip of the Day
+                    </button>
+                </div>
+
+                <!-- Tips Grid -->
+                <div class="tips-grid" id="tips-grid">
+
+                    <!-- Tip 1 -->
+                    <div class="tip-card" data-category="nutrition">
+                        <div class="tip-header">
+                            <div class="tip-icon-bg icon-green">
+                                <i class="fa-solid fa-glass-water"></i>
+                            </div>
+                            <span class="badge badge-light">Hydration</span>
+                        </div>
+                        <h3 class="tip-title">Drink 8 Glasses of Water Daily</h3>
+                        <p class="tip-desc">Proper hydration aids digestion, improves circulation, keeps skin healthy, and maintains body energy levels.</p>
+                        <div class="tip-footer">
+                            <span class="read-time"><i class="fa-regular fa-clock"></i> 2 min read</span>
+                            <button class="btn-text-link view-tip-btn" data-tip-id="1">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Tip 2 -->
+                    <div class="tip-card" data-category="fitness">
+                        <div class="tip-header">
+                            <div class="tip-icon-bg icon-blue">
+                                <i class="fa-solid fa-person-walking"></i>
+                            </div>
+                            <span class="badge badge-light">Fitness</span>
+                        </div>
+                        <h3 class="tip-title">Aim for 30 Mins Walk</h3>
+                        <p class="tip-desc">Brisk daily walking boosts cardiovascular health, strengthens bones, and enhances calorie burning.</p>
+                        <div class="tip-footer">
+                            <span class="read-time"><i class="fa-regular fa-clock"></i> 3 min read</span>
+                            <button class="btn-text-link view-tip-btn" data-tip-id="2">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Tip 3 -->
+                    <div class="tip-card" data-category="sleep">
+                        <div class="tip-header">
+                            <div class="tip-icon-bg icon-purple">
+                                <i class="fa-solid fa-bed"></i>
+                            </div>
+                            <span class="badge badge-light">Sleep</span>
+                        </div>
+                        <h3 class="tip-title">Prioritize 7–9 Hours of Sleep</h3>
+                        <p class="tip-desc">Consistent restful sleep repairs muscle tissue, solidifies memory, and strengthens immunity.</p>
+                        <div class="tip-footer">
+                            <span class="read-time"><i class="fa-regular fa-clock"></i> 2 min read</span>
+                            <button class="btn-text-link view-tip-btn" data-tip-id="3">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Tip 4 -->
+                    <div class="tip-card" data-category="mental">
+                        <div class="tip-header">
+                            <div class="tip-icon-bg icon-orange">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <span class="badge badge-light">Mental Health</span>
+                        </div>
+                        <h3 class="tip-title">Practice Mindful Breathing</h3>
+                        <p class="tip-desc">Taking 5 minutes for deep breathing exercises lowers cortisol levels and relieves daily work stress.</p>
+                        <div class="tip-footer">
+                            <span class="read-time"><i class="fa-regular fa-clock"></i> 4 min read</span>
+                            <button class="btn-text-link view-tip-btn" data-tip-id="4">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Tip 5 -->
+                    <div class="tip-card" data-category="nutrition">
+                        <div class="tip-header">
+                            <div class="tip-icon-bg icon-green">
+                                <i class="fa-solid fa-carrot"></i>
+                            </div>
+                            <span class="badge badge-light">Nutrition</span>
+                        </div>
+                        <h3 class="tip-title">Eat Whole Rainbow Foods</h3>
+                        <p class="tip-desc">Incorporate colorful vegetables and fruits into every meal for a wide range of antioxidant nutrients.</p>
+                        <div class="tip-footer">
+                            <span class="read-time"><i class="fa-regular fa-clock"></i> 3 min read</span>
+                            <button class="btn-text-link view-tip-btn" data-tip-id="5">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Tip 6 -->
+                    <div class="tip-card" data-category="fitness">
+                        <div class="tip-header">
+                            <div class="tip-icon-bg icon-teal">
+                                <i class="fa-solid fa-child-reaching"></i>
+                            </div>
+                            <span class="badge badge-light">Posture</span>
+                        </div>
+                        <h3 class="tip-title">Stretch Every 60 Minutes</h3>
+                        <p class="tip-desc">Standing up and stretching while working reduces spinal strain, stiffness, and posture fatigue.</p>
+                        <div class="tip-footer">
+                            <span class="read-time"><i class="fa-regular fa-clock"></i> 2 min read</span>
+                            <button class="btn-text-link view-tip-btn" data-tip-id="6">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Contact Page Section -->
+        <section class="section contact-section bg-alt" id="contact">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> Get In Touch</span>
+                    <h2 class="section-title">Contact Support</h2>
+                    <p class="section-subtitle">Have questions or feedback about MediPulse? Reach out to our health monitoring team.</p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <!-- Contact Cards -->
+                    <div class="contact-info-col">
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                            <div>
+                                <h4>Emergency Support</h4>
+                                <p>1-800-MEDIPULSE (24/7)</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                            <div>
+                                <h4>Email Inquiries</h4>
+                                <p>support@medipulse.health</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h4>Main Center</h4>
+                                <p>742 Evergreen Wellness Way, Medical Park, CA 90210</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card hours-card">
+                            <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+                            <div>
+                                <h4>Working Hours</h4>
+                                <p>Mon - Fri: 8:00 AM - 8:00 PM</p>
+                                <p>Sat - Sun: 9:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div class="contact-form-card">
+                        <form id="contact-form" novalidate>
+                            <h3 class="form-title"><i class="fa-regular fa-paper-plane"></i> Send Us a Message</h3>
+                            
+                            <div class="form-group">
+                                <label for="contact-name">Full Name <span class="required">*</span></label>
+                                <div class="input-icon-wrapper">
+                                    <i class="fa-regular fa-user"></i>
+                                    <input type="text" id="contact-name" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <small class="error-text" id="err-name">Please enter your name.</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-email">Email Address <span class="required">*</span></label>
+                                <div class="input-icon-wrapper">
+                                    <i class="fa-regular fa-envelope"></i>
+                                    <input type="email" id="contact-email" class="form-control" placeholder="john@example.com" required>
+                                </div>
+                                <small class="error-text" id="err-email">Please enter a valid email address.</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-subject">Subject</label>
+                                <div class="input-icon-wrapper">
+                                    <i class="fa-solid fa-tag"></i>
+                                    <input type="text" id="contact-subject" class="form-control" placeholder="Feedback or Question">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-message">Message <span class="required">*</span></label>
+                                <textarea id="contact-message" rows="4" class="form-control" placeholder="Type your message here..." required></textarea>
+                                <small class="error-text" id="err-message">Please enter a message (at least 10 characters).</small>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block btn-lg" id="contact-submit-btn">
+                                <i class="fa-solid fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 6. Footer -->
+    <footer class="footer">
+        <div class="footer-disclaimer">
+            <div class="container">
+                <p><i class="fa-solid fa-triangle-exclamation"></i> <strong>Medical Disclaimer:</strong> MediPulse is an interactive demonstration health telemetry tool. Always consult a qualified medical professional for official diagnosis and treatment.</p>
+            </div>
+        </div>
+
+        <div class="container footer-content">
+            <div class="footer-col footer-brand">
+                <a href="#home" class="logo footer-logo">
+                    <div class="logo-icon-bg">
+                        <i class="fa-solid fa-heart-pulse logo-icon"></i>
+                    </div>
+                    <span class="logo-text">Medi<span class="highlight">Pulse</span></span>
+                </a>
+                <p class="brand-desc">Empowering individuals with real-time vitals tracking, body metric calculators, and daily wellness intelligence.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="Twitter/X" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-link" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#dashboard"><i class="fa-solid fa-chevron-right"></i> Live Dashboard</a></li>
+                    <li><a href="#bmi-calculator"><i class="fa-solid fa-chevron-right"></i> BMI Calculator</a></li>
+                    <li><a href="#health-tips"><i class="fa-solid fa-chevron-right"></i> Health Tips</a></li>
+                    <li><a href="#contact"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Vital Ranges</h4>
+                <ul class="footer-links">
+                    <li><a href="#dashboard"><i class="fa-solid fa-heart"></i> Heart Rate (60-100 BPM)</a></li>
+                    <li><a href="#dashboard"><i class="fa-solid fa-droplet"></i> BP (&lt;120/80 mmHg)</a></li>
+                    <li><a href="#dashboard"><i class="fa-solid fa-temperature-half"></i> Temp (98.6°F / 37°C)</a></li>
+                    <li><a href="#dashboard"><i class="fa-solid fa-lungs"></i> SpO₂ (95%-100%)</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Newsletter</h4>
+                <p class="newsletter-desc">Subscribe for monthly health tips & vital wellness updates.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to MediPulse updates!');">
+                    <input type="email" placeholder="Your email address" class="form-control" required>
+                    <button type="submit" class="btn btn-primary" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 MediPulse Health Monitoring System. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tip Detail Modal -->
+    <div class="modal" id="tip-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+            <div class="modal-header">
+                <div class="tip-icon-bg icon-green" id="modal-icon">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div>
+                    <span class="badge badge-light" id="modal-badge">Category</span>
+                    <h3 id="modal-title">Tip Title</h3>
+                </div>
+            </div>
+            <div class="modal-body" id="modal-body-text">
+                Full tip content will be injected here.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-sm" id="modal-done-btn">Got It!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

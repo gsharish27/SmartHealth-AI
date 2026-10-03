@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #123B66;
+    --accent: #16A6A0;
+    --background: #F6F8FB;
+    --surface: #FFFFFF;
+    --text: #172033;
+    --muted: #687386;
+    --border: #E5EAF0;
+    --success: #20A464;
+    --warning: #E5A11A;
+    --danger: #D94A4A;
+
+    --card: #FFFFFF;
+    --card-foreground: #172033;
+    --foreground: #172033;
+    --muted-foreground: #687386;
+  }
+
+  .dark {
+    --background: #0B1320;
+    --surface: #121C2D;
+    --text: #F0F4F8;
+    --muted: #8E9BAE;
+    --border: #1E2C42;
+
+    --card: #121C2D;
+    --card-foreground: #F0F4F8;
+    --foreground: #F0F4F8;
+    --muted-foreground: #8E9BAE;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Inter', 'Manrope', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Typography Utility Helpers */
+.h1-page {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.h2-section {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.h3-card {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.body-regular {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.text-secondary {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--muted);
+}

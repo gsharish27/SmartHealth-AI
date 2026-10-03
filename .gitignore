@@ -1,0 +1,21 @@
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Java / Maven
+backend/target/
+.mvn/
+*.class
+*.jar
+*.war
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Logs
+*.log

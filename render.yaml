@@ -1,12 +1,11 @@
-services:
-  # 1. PostgreSQL Database
-  - type: postgres
-    name: health-postgres-db
+databases:
+  - name: health-postgres-db
     databaseName: healthdb
     user: postgres
     plan: free
 
-  # 2. Spring Boot Backend Web Service
+services:
+  # Spring Boot Backend Web Service
   - type: web
     name: smarthealth-backend
     env: docker

@@ -5,7 +5,7 @@ import com.healthmonitoring.entity.Doctor;
 import com.healthmonitoring.entity.DoctorPatientAccess;
 import com.healthmonitoring.entity.HealthProfile;
 import com.healthmonitoring.entity.User;
-import com.healthmonitoring.exception.AccessDeniedException;
+import org.springframework.security.access.AccessDeniedException;
 import com.healthmonitoring.exception.ResourceNotFoundException;
 import com.healthmonitoring.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -104,7 +104,7 @@ public class DoctorService {
         // Enforce security: Access only granted patients!
         boolean hasAccess = accessRepository.existsByDoctorIdAndPatientIdAndIsActiveTrue(doctor.getId(), patientId);
         if (!hasAccess) {
-            throw new org.springframework.security.access.AccessDeniedException("Doctor does not have active access permissions for patient ID: " + patientId);
+            throw new AccessDeniedException("Doctor does not have active access permissions for patient ID: " + patientId);
         }
 
         User patient = userRepository.findById(patientId)

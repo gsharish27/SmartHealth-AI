@@ -16,7 +16,7 @@ services:
       - key: SPRING_DATASOURCE_URL
         fromDatabase:
           name: health-postgres-db
-          property: connectionString
+          property: jdbcConnectionString
       - key: JWT_SECRET
         value: 9a8f7e6d5c4b3a210987654321fedcba9a8f7e6d5c4b3a210987654321fedcba
       - key: CORS_ALLOWED_ORIGINS
